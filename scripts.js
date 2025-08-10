@@ -99,9 +99,17 @@ function setupModalCloseHandler() {
 
 function setupAddTaskButton() {
   const addTaskBtn = document.getElementById("add-task-btn");
-  addTaskBtn.addEventListener("click", () => {
-    openTaskModal(); // Open in add mode
-  });
+  const addTaskBtnMobile = document.getElementById("add-task-btn-mobile");
+  if (addTaskBtn) {
+    addTaskBtn.addEventListener("click", () => {
+      openTaskModal();
+    });
+  }
+  if (addTaskBtnMobile) {
+    addTaskBtnMobile.addEventListener("click", () => {
+      openTaskModal();
+    });
+  }
 }
 
 function setupTaskFormHandler() {
