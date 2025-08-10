@@ -55,14 +55,9 @@ function renderTasks(tasks) {
   });
 }
 
-let editingTask = null; // Track if editing or adding a task
+let editingTask = null; // Track if editing or adding
 let tasks = [...initialTasks]; // Use a mutable array
 
-
-/**
- * Opens the modal dialog with pre-filled task details.
- * @param {Object} task - The task object to display in the modal.
- */
 function openTaskModal(task = null) {
   const modal = document.getElementById("task-modal");
   const titleInput = document.getElementById("task-title");
@@ -89,9 +84,6 @@ function openTaskModal(task = null) {
   modal.showModal();
 }
 
-/**
- * Sets up modal close behavior.
- */
 function setupModalCloseHandler() {
   const modal = document.getElementById("task-modal");
   const closeBtn = document.getElementById("close-modal-btn");
@@ -100,9 +92,6 @@ function setupModalCloseHandler() {
   });
 }
 
-/**
- * Sets up the "Add Task" button click handler.
- */
 function setupAddTaskButton() {
   const addTaskBtn = document.getElementById("add-task-btn");
   addTaskBtn.addEventListener("click", () => {
@@ -110,9 +99,6 @@ function setupAddTaskButton() {
   });
 }
 
-/**
- * Sets up the task form submission handler.
- */
 function setupTaskFormHandler() {
   const form = document.getElementById("task-form");
   form.addEventListener("submit", (e) => {
@@ -145,9 +131,6 @@ function setupTaskFormHandler() {
   });
 }
 
-/**
- * Initializes the task board and modal handlers.
- */
 function initTaskBoard() {
   clearExistingTasks();
   renderTasks(tasks);
