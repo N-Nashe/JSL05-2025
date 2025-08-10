@@ -39,6 +39,3 @@ A fully functional Kanban board task management system built with **HTML**, **CS
 - Integration with a backend API for persistent storage.
 - Task deadlines and notifications.
 
-## License
-
-This project is open source and available under the MIT License.
