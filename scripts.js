@@ -56,6 +56,7 @@ function renderTasks(tasks) {
 }
 
 let editingTask = null; // Track if editing or adding a task
+let tasks = [...initialTasks]; // Use a mutable array
 
 
 /**
