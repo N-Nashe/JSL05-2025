@@ -137,6 +137,33 @@ header {
   cursor: pointer;
 }
 
+/* Hide mobile add button by default */
+.add-task-btn-mobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+/* Show mobile add button and hide large button on small screens */
+@media screen and (max-width: 576px) {
+  .add-task-btn {
+    display: none;
+  }
+  .add-task-btn-mobile {
+    display: flex;
+  }
+}
+
 .logo-mobile {
   display: none; /* Hidden on desktop; shown on smaller screens */
 }
