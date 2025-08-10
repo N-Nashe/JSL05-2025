@@ -32,15 +32,12 @@
     <div id="layout">
       <header id="header" class="sticky-header">
         <div class="header-name-div">
-          <img
-            src="./assets/favicon.svg"
-            alt="logo-mobile"
-            class="logo-mobile"
-          />
           <div class="launch-career-and-button">
+           
             <h2 class="header-board-name" id="header-board-name">
+               <img src="./assets/favicon.svg" alt="logo-mobile" class="logo-mobile" />
               Launch Career
-            </h2>
+            </h2 class="header-board-name">
             <button class="add-task-btn" id="add-task-btn">
               <span> + Add Task</span>
             </button>
@@ -91,13 +88,10 @@
             &times;
           </button>
         </div>
-
         <label for="task-title">Title</label>
         <input type="text" id="task-title" name="title" required />
-
         <label for="task-desc">Description</label>
         <textarea id="task-desc" name="description" rows="4"></textarea>
-
         <label for="task-status">Status</label>
         <select id="task-status" name="status" required>
           <option value="todo">todo</option>
