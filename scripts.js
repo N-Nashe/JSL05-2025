@@ -1,4 +1,5 @@
 import { initialTasks } from "./initialData.js";
+import { saveTasksToStorage, loadTasksFromStorage } from "./storage.js";
 
 /**
  * Creates a single task DOM element.
