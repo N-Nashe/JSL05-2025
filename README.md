@@ -17,7 +17,7 @@ A fully functional Kanban board task management system built with **HTML**, **CS
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (ES6+)
+- Javascript
 
 ## How to Use
 
@@ -30,10 +30,7 @@ A fully functional Kanban board task management system built with **HTML**, **CS
 ## Project Structure
 
 - `initialData.js` — Contains initial task data and localStorage load/save functions.
-- `storage.js` — Handles localStorage interactions.
-- `tasks.js` — Manages task creation, editing, deletion, and task state.
-- `ui.js` — Renders tasks and handles modal UI.
-- `script.js` — Initializes the app and links all modules.
+- `script.js` — Enables adding, editing, and displaying tasks on the Kanban board using a modal form.
 
 ## Future Improvements
 
