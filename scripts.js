@@ -57,7 +57,11 @@ function renderTasks(tasks) {
 }
 
 let editingTask = null; // Track if editing or adding
-let tasks = [...initialTasks]; // Use a mutable array
+let tasks = loadTasksFromStorage();
+if (!tasks || tasks.length === 0) {
+  tasks = [...initialTasks];
+  saveTasksToStorage(tasks);
+}
 
 function openTaskModal(task = null) {
   const modal = document.getElementById("task-modal");
@@ -111,12 +115,10 @@ function setupTaskFormHandler() {
     if (!title) return;
 
     if (editingTask) {
-      // Edit existing task (optional, not required for just adding)
       editingTask.title = title;
       editingTask.description = description;
       editingTask.status = status;
     } else {
-      // Add new task
       const newTask = {
         id: Date.now(),
         title,
@@ -126,6 +128,7 @@ function setupTaskFormHandler() {
       tasks.push(newTask);
     }
 
+    saveTasksToStorage(tasks); // <-- Save to localStorage here
     clearExistingTasks();
     renderTasks(tasks);
     document.getElementById("task-modal").close();
