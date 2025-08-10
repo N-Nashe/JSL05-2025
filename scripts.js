@@ -55,19 +55,35 @@ function renderTasks(tasks) {
   });
 }
 
+let editingTask = null; // Track if editing or adding
+let tasks = [...initialTasks]; // Use a mutable array
+
 /**
  * Opens the modal dialog with pre-filled task details.
  * @param {Object} task - The task object to display in the modal.
  */
-function openTaskModal(task) {
+function openTaskModal(task = null) {
   const modal = document.getElementById("task-modal");
   const titleInput = document.getElementById("task-title");
   const descInput = document.getElementById("task-desc");
   const statusSelect = document.getElementById("task-status");
+  const modalTitle = document.getElementById("modal-title");
 
-  titleInput.value = task.title;
-  descInput.value = task.description;
-  statusSelect.value = task.status;
+  if (task) {
+    // Edit mode
+    titleInput.value = task.title;
+    descInput.value = task.description || "";
+    statusSelect.value = task.status;
+    modalTitle.textContent = "Edit Task";
+    editingTask = task;
+  } else {
+    // Add mode
+    titleInput.value = "";
+    descInput.value = "";
+    statusSelect.value = "todo";
+    modalTitle.textContent = "Add Task";
+    editingTask = null;
+  }
 
   modal.showModal();
 }
@@ -78,9 +94,53 @@ function openTaskModal(task) {
 function setupModalCloseHandler() {
   const modal = document.getElementById("task-modal");
   const closeBtn = document.getElementById("close-modal-btn");
-
   closeBtn.addEventListener("click", () => {
     modal.close();
+  });
+}
+
+/**
+ * Sets up the "Add Task" button click handler.
+ */
+function setupAddTaskButton() {
+  const addTaskBtn = document.getElementById("add-task-btn");
+  addTaskBtn.addEventListener("click", () => {
+    openTaskModal(); // Open in add mode
+  });
+}
+
+/**
+ * Sets up the task form submission handler.
+ */
+function setupTaskFormHandler() {
+  const form = document.getElementById("task-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("task-title").value.trim();
+    const description = document.getElementById("task-desc").value.trim();
+    const status = document.getElementById("task-status").value;
+
+    if (!title) return;
+
+    if (editingTask) {
+      // Edit existing task (optional, not required for just adding)
+      editingTask.title = title;
+      editingTask.description = description;
+      editingTask.status = status;
+    } else {
+      // Add new task
+      const newTask = {
+        id: Date.now(),
+        title,
+        description,
+        status,
+      };
+      tasks.push(newTask);
+    }
+
+    clearExistingTasks();
+    renderTasks(tasks);
+    document.getElementById("task-modal").close();
   });
 }
 
@@ -89,8 +149,10 @@ function setupModalCloseHandler() {
  */
 function initTaskBoard() {
   clearExistingTasks();
-  renderTasks(initialTasks);
+  renderTasks(tasks);
   setupModalCloseHandler();
+  setupAddTaskButton();
+  setupTaskFormHandler();
 }
 
 // Wait until DOM is fully loaded
