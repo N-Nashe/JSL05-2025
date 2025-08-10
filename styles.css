@@ -117,7 +117,8 @@ h4 {
   flex-direction: row;
   align-items: center;
   justify-content: space-between; /* Space between title and button */
-  gap: clamp(22em, 8vw, 8rem);                      /* Space between elements */
+  gap: 22em;
+                    
  
   }
 
@@ -130,7 +131,7 @@ h4 {
   .header-name-div{
     display: flex;
     flex-direction: row;
-    gap: 6rem; /* Space between logo and board name */
+    gap: 10rem; /* Space between logo and board name */
   }
 
 .add-task-btn {
